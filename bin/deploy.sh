@@ -1,6 +1,13 @@
-### prereq
-# install gcloud
-# run gcloud init
-# mvn clean package -f ../pom.xml
+source rc.sh
+
 cd ..
-google-cloud-cli.gcloud functions deploy world-health --entry-point com.example.functions.WorldHealth --runtime java11 --trigger-http --memory 128MB --allow-unauthenticated --region europe-west3 --set-env-vars HEALTH=OK --max-instances 1
+mvn clean package
+google-cloud-cli.gcloud functions deploy "$FUNCTION_NAME" \
+  --region europe-west3 \
+  --runtime java11 \
+  --max-instances 1 \
+  --memory 128MB \
+  --allow-unauthenticated \
+  --trigger-http \
+  --entry-point com.example.functions.WorldHealth \
+  --set-env-vars HEALTH=OK
