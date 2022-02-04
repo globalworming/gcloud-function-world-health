@@ -8,6 +8,7 @@
 #
 .gcloudignore
 .git
+.github
 .gitignore
 #!include:.gitignore
 bin
